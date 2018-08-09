@@ -1,0 +1,10 @@
+{
+  "tests/test_amberlite.py::test_amberlite[cat 3ptb.pdb | pdb4amber > 3ptb_amber_pipe.pdb 2>>error_output.txt-3ptb.pdb-3ptb_amber_pipe.pdb]": true,
+  "tests/test_amberlite.py::test_amberlite[pdb4amber --reduce < 3ptb.pdb > 3ptb_amber_reduce_stdin.pdb-3ptb.pdb-3ptb_amber_reduce_stdin.pdb]": true,
+  "tests/test_amberlite.py::test_amberlite[pdb4amber -i 3ptb.pdb -o 3ptb_amber_reduce.pdb --reduce-3ptb.pdb-3ptb_amber_reduce.pdb]": true,
+  "tests/test_cmd.py::test_fetch_pdbid_and_use_reduce": true,
+  "tests/test_cmd.py::test_keep_altlocs": true,
+  "tests/test_cmd.py::test_reduce_with_cif_input": true,
+  "tests/test_cmd.py::test_reduce_with_pdb_input": true,
+  "tests/test_cmd.py::test_stdin_stdout_with_reduce": true
+}
