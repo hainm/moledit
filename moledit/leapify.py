@@ -1,4 +1,4 @@
-from .pdb4amber import AmberPDBFixer
+from pdb4amber.pdb4amber import AmberPDBFixer
 from .utils import tempfolder
 from .leap_runner import run_tleap
 
