@@ -82,8 +82,6 @@ def run_tleap(parm, ns_names, gaplist, sslist, leap_input=None):
             input_pdb=input_pdb, prmtop=prmtop, rst7=rst7)
     f.write(leap_string)
     f.close()
-    with open(tleap_input_file) as fh:
-        print(fh.read())
 
     # strangely tleap appends to the logfile so must delete first
     cmd = ['tleap', '-f', tleap_input_file]
