@@ -59,6 +59,14 @@ class PytrajViewer:
     def align_principal_axis(self, *args, **kwargs):
         pt.align_principal_axis(self.traj, *args, **kwargs)
 
+    def strip(self, mask):
+        self.traj.strip(mask)
+        struct = dict(data=nglview.PyTrajTrajectory(self.traj).get_structure_string(),
+                ext='pdb')
+        self.viewer._remote_call(
+                'replaceStructure', target='Widget',
+                args=[struct])
+
 
 class ViewerEditor(AmberBuilder):
     ''' Fixing/Building/Editing/Visualizing in Jupyter notebook
