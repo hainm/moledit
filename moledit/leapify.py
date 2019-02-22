@@ -36,7 +36,7 @@ class Leapify(AmberPDBFixer):
 
     def leapify(self, *args, **kwargs):
         with tempfolder():
-            ns_names = self.find_non_starndard_resnames(
+            ns_names = self.find_non_standard_resnames(
             ) if self.parm is not None else []
             gaplist = self.find_gaps() if self.parm is not None else []
             sslist, _ = self.find_disulfide() if self.parm is not None else []
