@@ -1,6 +1,7 @@
 from functools import wraps
 from .amber_builder import AmberBuilder
 import nglview
+import pytraj as pt
 
 
 def _update_structure(fixer):
@@ -29,6 +30,34 @@ def update_structure(func, fixer):
         return result
 
     return me
+
+
+def refresh(func):
+    def wrap(*args, **kwargs):
+        self = args[0]
+        out = func(*args, **kwargs)
+        self.viewer[0].set_coordinates(self.traj[0].xyz)
+        return out
+    return wrap
+
+
+class PytrajViewer:
+
+    def __init__(self, traj, index=0):
+        self.traj = traj[index:index+1]
+        self.viewer = nglview.show_pytraj(self.traj)
+
+    @refresh
+    def rotate(self, *args, **kwargs):
+        self.traj.rotate(*args, **kwargs)
+
+    @refresh
+    def make_structure(self, *args, **kwargs):
+        pt.make_structure(self.traj, *args, **kwargs)
+
+    @refresh
+    def align_principal_axis(self, *args, **kwargs):
+        pt.align_principal_axis(self.traj, *args, **kwargs)
 
 
 class ViewerEditor(AmberBuilder):
