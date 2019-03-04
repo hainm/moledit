@@ -59,6 +59,11 @@ class PytrajViewer:
     def align_principal_axis(self, *args, **kwargs):
         pt.align_principal_axis(self.traj, *args, **kwargs)
 
+    @refresh
+    def rotate_dihedral(self, *args, **kwargs):
+        pt.rotate_dihedral(self.traj, *args, **kwargs)
+
+    @refresh
     def strip(self, mask):
         self.traj.strip(mask)
         struct = dict(data=nglview.PyTrajTrajectory(self.traj).get_structure_string(),
